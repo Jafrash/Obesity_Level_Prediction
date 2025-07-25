@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Access History</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <style>
+        /* Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7fb;
+            color: #333;
+            padding-top: 70px;
+        }
+/* Navbar */
+.navbar {
+    background-color: #2d3a4b;
+    padding: 15px 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.navbar a:hover {
+    background-color: #3e5b75;
+    border-radius: 5px;
+}
+
+        /* User Access History Table */
+        h1 {
+            text-align: center;
+            color: #2d3a4b;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #2d3a4b;
+            color: #fff;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f0f4f8;
+        }
+
+        tr:hover td {
+            background-color: #ffebcc;
+        }
+
+        /* Back to Home Button */
+        a.btn-home {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #ff7f50;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        a.btn-home:hover {
+            background-color: #ff5a5f;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #2d3a4b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #ff7f50;
+        }
+
+        .footer a:hover {
+            color: #ff5a5f;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Obesity Predictor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('predict') }}">Prediction Tool</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('insights') }}">Insights</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('users') }}">Our Trusted User</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- User Access History Table -->
+    <h1>User Access History</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Predicted Category</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+                <tr>
+                    <td>{{ record.id }}</td>
+                    <td>{{ record.predicted_category }}</td>
+                    <td>{{ record.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Back to Home Button -->
+    <a href="{{ url_for('home') }}" class="btn-home">Back to Home</a>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Obesity Predictor. All rights reserved.</p>
+        <a href="{{ url_for('contact') }}">Contact Us</a>
+    </div>
+</body>
+</html>

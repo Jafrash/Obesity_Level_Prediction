@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obesity Risk Predictor - Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        /* Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f7fb;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #2d3a4b;
+    padding: 15px 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.navbar a:hover {
+    background-color: #3e5b75;
+    border-radius: 5px;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    background: linear-gradient(135deg, #2d3a4b, #3e5b75);
+    color: #fff;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure particles are behind the content */
+}
+
+.hero-section {
+    position: relative;
+    height: 100vh;
+    background: linear-gradient(135deg, #2d3a4b, #3e5b75);
+    color: #fff;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure particles are behind the content */
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+    height: 100%;
+    position: relative; /* Ensure hero content stays above particles */
+    z-index: 1;
+}
+
+.hero-left h1 {
+    font-size: 3rem;
+}
+
+.cta-btn {
+    background-color: #ff7f50;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.cta-btn:hover {
+    background-color: #ff5a5f;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    background: linear-gradient(135deg, #2d3a4b, #3e5b75);
+    color: #fff;
+    display: flex;
+    justify-content: center; /* Horizontally centers the content */
+    align-items: center; /* Vertically centers the content */
+    text-align: center;  /* Ensures the text is centered */
+}
+
+/* Hero Image Adjustments */
+.hero-right {
+    position: relative;
+    overflow: hidden;
+    width: 60%;  /* You can adjust this value as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-right img.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: ellipse(50% 25% at 50% 50%);  /* Elliptical crop */
+    border-radius: 15px;
+    transform: scale(1.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect for a more interactive look */
+.hero-right img.hero-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Optional: Adjust for smaller screens */
+@media (max-width: 768px) {
+    .hero-right img.hero-image {
+        clip-path: ellipse(55% 30% at 50% 50%);
+        transform: scale(1);
+    }
+}
+
+
+
+/* Features Section */
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 10%;
+}
+
+.feature-box {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Example Predictions Section */
+.example-predictions {
+    padding: 50px 10%;
+    background-color: #f0f4f8;
+    width: 100%;
+    overflow: hidden;  /* Hide horizontal scrollbar */
+}
+
+.example-predictions h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.prediction-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    animation: scrollLeft 30s linear infinite; /* Continuous scroll animation */
+    width: 100%;
+}
+
+.prediction-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 250px;
+    flex-shrink: 0;
+}
+
+/* Define the scrolling animation */
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(100%); /* Start from the right */
+    }
+    100% {
+        transform: translateX(-100%); /* End at the left */
+    }
+}
+
+
+/* Footer */
+.footer {
+    background-color: #2d3a4b;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer a {
+    color: #ff7f50;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Obesity Predictor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('predict') }}">Prediction Tool</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('insights') }}">Insights</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('users') }}">Our Trusted User</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div id="particles-js"></div>
+        <div class="hero-content">
+            <div class="hero-left">
+                <h1>Empower Your Health with Smart AI Predictions</h1>
+                <p>Assess Your Obesity Risk with Advanced Machine Learning</p>
+                <a href="{{ url_for('predict') }}" class="cta-btn">Get Started</a>
+            </div>
+            <div class="hero-right">
+                <img src="../static/images/pexels-heloisa-freitas-734111-1608099.jpg" alt="Health Analysis" class="hero-image">
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="feature-box">
+            <h3>Personalized Predictions</h3>
+            <p>Get accurate obesity risk levels based on your profile.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Health Insights</h3>
+            <p>Access actionable insights to improve your health.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Secure Data</h3>
+            <p>We prioritize your privacy with secure data storage.</p>
+        </div>
+    </section>
+
+    <!-- Example Predictions Section -->
+   <!-- Example Predictions Section -->
+<section id="predict" class="example-predictions">
+    <h2>Sample User Predictions</h2>
+    <div class="prediction-container">
+        <div class="prediction-box">
+            <h4>User 1</h4>
+            <p>Age: 25, Gender: Male</p>
+            <p><strong>Prediction: Normal Weight</strong></p>
+        </div>
+        <div class="prediction-box">
+            <h4>User 2</h4>
+            <p>Age: 40, Gender: Female</p>
+            <p><strong>Prediction: Obesity Type I</strong></p>
+        </div>
+        <div class="prediction-box">
+            <h4>User 3</h4>
+            <p>Age: 30, Gender: Male</p>
+            <p><strong>Prediction: Overweight Level II</strong></p>
+        </div>
+        <div class="prediction-box">
+            <h4>User 4</h4>
+            <p>Age: 35, Gender: Female</p>
+            <p><strong>Prediction: Obesity Type II</strong></p>
+        </div>
+        <div class="prediction-box">
+            <h4>User 5</h4>
+            <p>Age: 45, Gender: Male</p>
+            <p><strong>Prediction: Obesity Type III</strong></p>
+        </div>
+        <div class="prediction-box">
+            <h4>User 6</h4>
+            <p>Age: 50, Gender: Female</p>
+            <p><strong>Prediction: Overweight Level I</strong></p>
+        </div>
+        <div class="prediction-box">
+            <h4>User 7</h4>
+            <p>Age: 28, Gender: Male</p>
+            <p><strong>Prediction: Normal Weight</strong></p>
+        </div>
+    </div>
+</section>
+
+
+
+
+    
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Obesity Predictor. All Rights Reserved.</p>
+        <a href="#home">Back to Top</a>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

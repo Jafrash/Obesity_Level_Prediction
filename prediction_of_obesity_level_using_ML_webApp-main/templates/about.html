@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>About - Obesity Predictor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+    /* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f7fb;
+    color: #333;
+    padding-top: 70px; /* Adjusted for navbar height */
+}
+
+/* Navbar */
+.navbar {
+    background-color: #2d3a4b;
+    padding: 15px 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.navbar a:hover {
+    background-color: #3e5b75;
+    border-radius: 5px;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    background: linear-gradient(135deg, #2d3a4b, #3e5b75);
+    color: #fff;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+    height: 100%;
+}
+
+.hero-left h1 {
+    font-size: 3rem;
+}
+
+.cta-btn {
+    background-color: #ff7f50;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-btn:hover {
+    background-color: #ff5a5f;
+}
+
+/* About Us Section */
+.container {
+    margin-top: 70px; /* Space for fixed navbar */
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #2d3a4b;
+}
+
+.alert-warning {
+    background-color: #f39c12;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* Footer */
+.footer {
+    background-color: #2d3a4b;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer a {
+    color: #ff7f50;
+}
+
+    </style>
+</head>
+<body>
+
+     <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Obesity Predictor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('predict') }}">Prediction Tool</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('insights') }}">Insights</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('users') }}">Our Trusted User</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- About the Model Section -->
+<div class="container">
+        <h2 class="text-center mb-4">About the Obesity Prediction Model</h2>
+
+        <div class="section">
+            <h4 class="section-title">Introduction</h4>
+            <p>
+                The Obesity Predictor is a tool designed to help individuals assess their obesity risk based on various lifestyle and demographic factors.
+                This tool aims to raise awareness about potential health risks associated with obesity and provides insights for healthier lifestyle choices.
+            </p>
+        </div>
+
+        <div class="section">
+            <h4 class="section-title">Explanation of the Machine Learning Model</h4>
+            <p>
+                Our prediction model combines both traditional machine learning algorithms and deep learning techniques. The model uses:
+            </p>
+            <ul>
+                <li><strong>Decision Trees:</strong> For quick and efficient classification based on clear decision rules.</li>
+                <li><strong>Neural Networks:</strong> To capture deeper and more complex patterns in the data.</li>
+            </ul>
+            <p>
+                This hybrid approach ensures a higher accuracy rate by leveraging the strengths of both techniques. It identifies clear lifestyle-related patterns while accounting for complex correlations between features like age, height, weight, and family history.
+            </p>
+        </div>
+
+        <div class="section">
+            <h4 class="section-title">Data Sources</h4>
+            <p>
+                The model was trained using publicly available datasets, ensuring a comprehensive understanding of obesity-related factors. Key data sources include:
+            </p>
+            <ul>
+                <li>
+                    <a href="https://www.kaggle.com/datasets" target="_blank">Obesity Levels Dataset</a>:
+                    Provides data on obesity trends based on various demographic and behavioral inputs.
+                </li>
+                <li>
+                    <a href="https://www.kaggle.com/datasets" target="_blank">Lifestyle Habits Dataset</a>:
+                    Includes information on eating habits, physical activity, and technology use patterns.
+                </li>
+            </ul>
+            <p>
+                The datasets contain anonymized information about individuals' lifestyle habits, demographics, and obesity-related factors, enabling the model to make accurate predictions.
+            </p>
+        </div>
+
+        <div class="section">
+            <h4 class="section-title">Accuracy & Limitations</h4>
+            <p>
+                During testing, the model achieved an accuracy rate of approximately <strong>85%</strong>. However, like any predictive model, it has its limitations:
+            </p>
+            <ul>
+                <li>Accuracy depends on the quality and completeness of user input.</li>
+                <li>It may not account for all factors influencing obesity, such as genetic predispositions.</li>
+                <li>The predictions are based on past data and may not fully reflect future trends or behaviors.</li>
+            </ul>
+            <p>
+                Despite these limitations, the model serves as a useful tool for preliminary assessments and awareness.
+            </p>
+        </div>
+
+        <div class="alert alert-warning">
+            <strong>Disclaimer:</strong> The Obesity Predictor provides predictions based on data models and is not a substitute for professional medical advice. Always consult a healthcare professional for a personalized assessment.
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Obesity Predictor. All Rights Reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obesity Insights</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.container {
+    padding-top: 100px; /* Increased padding to give more space below the navbar */
+}
+
+
+body {
+    background-color: #f4f7fb;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #2d3a4b;
+    padding: 15px 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.navbar a:hover {
+    background-color: #3e5b75;
+    border-radius: 5px;
+}
+
+
+        /* Container */
+        .container {
+            padding-top: 100px;
+        }
+
+        h2 {
+            color: #2d3a4b;
+            font-weight: 600;
+        }
+
+        p {
+            color: #555;
+        }
+
+        /* Insight Categories */
+        .insight-category {
+            margin-top: 30px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .insight-category h3 {
+            color: #3e5b75;
+        }
+
+        .health-risks, .recommendations {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .recommendations ul {
+            padding-left: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #2d3a4b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #ff7f50;
+        }
+    </style>
+</head>
+<body>
+
+
+     <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Obesity Predictor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('predict') }}">Prediction Tool</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('insights') }}">Insights</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('users') }}">Our Trusted User</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+<!-- Content -->
+<div class="container">
+    <h2 class="text-center mb-4">Understanding Obesity Risk Levels</h2>
+    <p>Learn about different obesity categories, associated health risks, and lifestyle recommendations.</p>
+
+    <!-- Insight Categories -->
+    <div class="insight-category">
+        <h3>Insufficient Weight</h3>
+        <p><strong>Explanation:</strong> Body weight is below the recommended level for health.</p>
+        <div class="health-risks"><strong>Health Risks:</strong> Risk of osteoporosis, weakened immunity, and anemia.</div>
+        <div class="recommendations">
+            <strong>Recommendations:</strong>
+            <ul>
+                <li>Consume nutrient-rich, calorie-dense foods like nuts and lean meats.</li>
+                <li>Incorporate strength training to build muscle.</li>
+                <li>Consult a healthcare provider if needed.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="insight-category">
+        <h3>Normal Weight</h3>
+        <p><strong>Explanation:</strong> Reflects a balanced weight with low risk of obesity-related issues.</p>
+        <div class="recommendations">
+            <strong>Recommendations:</strong>
+            <ul>
+                <li>Maintain a balanced diet with fruits and vegetables.</li>
+                <li>Exercise regularly with a mix of aerobic and strength training.</li>
+                <li>Get routine health check-ups.</li>
+            </ul>
+        </div>
+    </div>
+
+   <!-- Overweight Level I -->
+   <div class="insight-category">
+    <h3>Overweight Level I</h3>
+    <p><strong>Explanation:</strong> Indicates a slight excess of body weight that can increase health risks if unchecked.</p>
+    <div class="health-risks">
+        <strong>Health Risks:</strong> Higher likelihood of developing hypertension, joint pain, and insulin resistance.
+    </div>
+    <div class="recommendations">
+        <strong>Recommendations:</strong>
+        <ul>
+            <li>Engage in at least 150 minutes of moderate-intensity physical activity weekly.</li>
+            <li>Adopt a lower-calorie diet, focusing on lean proteins, fruits, and vegetables.</li>
+            <li>Avoid sugary drinks and high-calorie snacks.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Overweight Level II -->
+<div class="insight-category">
+    <h3>Overweight Level II</h3>
+    <p><strong>Explanation:</strong> A more significant weight excess, associated with higher health risks.</p>
+    <div class="health-risks">
+        <strong>Health Risks:</strong> Increased risk of cardiovascular diseases, sleep apnea, and metabolic syndrome.
+    </div>
+    <div class="recommendations">
+        <strong>Recommendations:</strong>
+        <ul>
+            <li>Reduce refined carbohydrate intake and focus on whole foods.</li>
+            <li>Work with a healthcare provider on a structured weight-loss plan.</li>
+            <li>Increase daily physical activity, aiming for around 30 minutes most days of the week.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Obesity Type I -->
+<div class="insight-category">
+    <h3>Obesity Type I</h3>
+    <p><strong>Explanation:</strong> Moderate obesity that begins to affect metabolic and physical health.</p>
+    <div class="health-risks">
+        <strong>Health Risks:</strong> Greater risk of type 2 diabetes, high blood pressure, and liver disease.
+    </div>
+    <div class="recommendations">
+        <strong>Recommendations:</strong>
+        <ul>
+            <li>Focus on a high-fiber diet with lean proteins and avoid processed foods.</li>
+            <li>Regularly monitor weight and health markers like blood pressure and cholesterol.</li>
+            <li>Increase aerobic exercise, aiming for both endurance and strength training.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Obesity Type II -->
+<div class="insight-category">
+    <h3>Obesity Type II</h3>
+    <p><strong>Explanation:</strong> Significant obesity, raising the risk of numerous health conditions.</p>
+    <div class="health-risks">
+        <strong>Health Risks:</strong> High risk of severe cardiovascular disease, stroke, and mobility issues.
+    </div>
+    <div class="recommendations">
+        <strong>Recommendations:</strong>
+        <ul>
+            <li>Follow a calorie-controlled diet with a dietitian's guidance.</li>
+            <li>Begin with low-impact physical activities, like walking or swimming.</li>
+            <li>Consider psychological counseling if emotional factors contribute to overeating.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Obesity Type III -->
+<div class="insight-category">
+    <h3>Obesity Type III (Morbid Obesity)</h3>
+    <p><strong>Explanation:</strong> Severe obesity that significantly affects physical health and quality of life.</p>
+    <div class="health-risks">
+        <strong>Health Risks:</strong> Increased likelihood of heart disease, cancer, joint problems, and reduced life expectancy.
+    </div>
+    <div class="recommendations">
+        <strong>Recommendations:</strong>
+        <ul>
+            <li>Consult a healthcare provider to discuss potential medical or surgical options.</li>
+            <li>Engage in supervised physical activities suitable for health status.</li>
+            <li>Prioritize a structured meal plan and mental health support for sustainable changes.</li>
+        </ul>
+    </div>
+</div>
+</div>
+
+
+    <!-- More categories can follow the same format -->
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p>&copy; 2024 Obesity Predictor. All rights reserved. | <a href="#">Privacy Policy</a></p>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

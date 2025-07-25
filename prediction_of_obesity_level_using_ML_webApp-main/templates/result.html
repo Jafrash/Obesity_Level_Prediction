@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f7fb;
+    color: #333;
+    padding-top: 56px; /* Adjust for navbar height */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the body takes the full height of the viewport */
+}
+
+/* Navbar */
+.navbar {
+    background-color: #2d3a4b;
+    padding: 15px 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.navbar a:hover {
+    background-color: #3e5b75;
+    border-radius: 5px;
+}
+
+/* Result Container */
+.result-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    flex-grow: 1; /* Ensures content area grows and pushes footer down */
+}
+
+h2 {
+    color: #333;
+    font-weight: 600;
+}
+
+/* Result Text */
+.result {
+    font-size: 1.8rem; /* Change the font size */
+    font-weight: 600; /* Bold text */
+    color: black; /* Red color for better visibility */
+    font-family: 'Arial', sans-serif; /* New font style */
+}
+/* Add this to your CSS */
+.predicted-category {
+    color: #e74c3c; /* Red color */
+    font-weight: bold;
+}
+
+
+.suggestions {
+    font-size: 1.1rem;
+    color: #333;
+    margin-top: 20px;
+    text-align: left;
+    padding: 10px 0;
+}
+
+.suggestions h3 {
+    color: #f39c12;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.back-btn {
+    margin-top: 30px;
+    font-size: 1.2rem;
+    padding: 12px 30px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Footer */
+.footer {
+    background-color: #2d3a4b;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto; /* Ensures the footer is pushed to the bottom */
+}
+
+.footer a {
+    color: #ff7f50;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Obesity Predictor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('predict') }}">Prediction Tool</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('insights') }}">Insights</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('users') }}">Our Trusted User</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Result Display -->
+    <div class="result-container">
+        <h2>Obesity Risk Prediction Result</h2>
+        <p class="result">Based on your inputs, you are classified as: <strong class="predicted-category">{{ predicted_category.replace('_', ' ') }}</strong></p>
+
+
+
+        <!-- Display Personalized Suggestions -->
+        <div class="suggestions">
+            {% if predicted_category == 'Insufficient_Weight' %}
+                <h3>Diet Plan:</h3>
+                <ul>
+                    <li>Increase caloric intake with high-protein foods like chicken, eggs, and tofu.</li>
+                    <li>Include healthy fats like avocados, nuts, and olive oil.</li>
+                    <li>Eat calorie-dense foods such as whole milk, smoothies, and granola bars.</li>
+                </ul>
+                <h3>Physical Activity Plan:</h3>
+                <ul>
+                    <li>Focus on strength training exercises to build muscle mass.</li>
+                    <li>Avoid excessive cardio to prevent weight loss.</li>
+                </ul>
+            {% elif predicted_category == 'Normal_Weight' %}
+                <h3>Diet Plan:</h3>
+                <ul>
+                    <li>Maintain a balanced diet with lean proteins, whole grains, and vegetables.</li>
+                    <li>Include moderate portions of healthy fats like olive oil and nuts.</li>
+                </ul>
+                <h3>Physical Activity Plan:</h3>
+                <ul>
+                    <li>Engage in 150 minutes of moderate-intensity cardio weekly.</li>
+                    <li>Incorporate strength training twice a week.</li>
+                </ul>
+            {% elif predicted_category == 'Overweight_Level_I' %}
+                <h3>Diet Plan:</h3>
+                <ul>
+                    <li>Reduce calorie intake with nutrient-dense foods like vegetables and lean meats.</li>
+                    <li>Include more fiber-rich foods like oats, legumes, and non-starchy vegetables.</li>
+                </ul>
+                <h3>Physical Activity Plan:</h3>
+                <ul>
+                    <li>Aim for at least 300 minutes of moderate-intensity aerobic exercise weekly.</li>
+                    <li>Incorporate strength training to build muscle and boost metabolism.</li>
+                </ul>
+                {% elif predicted_category == 'Obesity_Type_I' %}
+                <h3>Diet Plan:</h3>
+                <ul>
+                    <li>Focus on a calorie-controlled diet with lean proteins and vegetables.</li>
+                    <li>Avoid refined sugars and high-fat foods.</li>
+                </ul>
+                <h3>Physical Activity Plan:</h3>
+                <ul>
+                    <li>Engage in at least 150 minutes of moderate-intensity cardio per week.</li>
+                    <li>Strength train 2-3 times per week.</li>
+                </ul>
+
+            {% elif predicted_category == 'Obesity_Type_II' %}
+                <h3>Diet Plan:</h3>
+                <ul>
+                    <li>Follow a very low-calorie diet under medical supervision.</li>
+                    <li>Focus on protein-rich foods, vegetables, and fiber.</li>
+                </ul>
+                <h3>Physical Activity Plan:</h3>
+                <ul>
+                    <li>Perform high-intensity cardio for at least 300 minutes per week.</li>
+                    <li>Strength train at least 3 times per week to build muscle mass.</li>
+                </ul>
+            {% elif predicted_category == 'Obesity_Type_III' %}
+                <h3>Diet Plan:</h3>
+                <ul>
+                    <li>Strictly follow a medically supervised low-calorie diet.</li>
+                    <li>Focus on nutrient-dense, low-calorie foods and avoid processed foods.</li>
+                </ul>
+                <h3>Physical Activity Plan:</h3>
+                <ul>
+                    <li>Start with low-impact exercises like walking or swimming.</li>
+                    <li>Gradually include resistance training to prevent muscle loss.</li>
+                </ul>
+            {% endif %}
+        </div>
+
+        <!-- Back Button -->
+        <a href="/predict" class="back-btn">Go Back</a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Obesity Predictor. All Rights Reserved.</p>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
